@@ -43,7 +43,7 @@ function Forecast({ data2 }) {
                   fontSize="20px"
                   padding={0.5}
                 >
-                  {item.dt_txt.slice(9, 10)}.{item.dt_txt.slice(6, 7)}
+                  {item.dt_txt.slice(8, 10)}.{item.dt_txt.slice(6, 7)}
                 </Typography>
                 <Divider sx={{ border: "1px solid black" }} />
                 <Typography
