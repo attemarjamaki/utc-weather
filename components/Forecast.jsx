@@ -10,30 +10,35 @@ function Forecast({ data2 }) {
 
   return (
     <>
-      <Box maxWidth={1000} margin={"auto"}>
+      <Box
+        maxWidth={1000}
+        margin={"auto"}
+        borderRadius={10}
+        backgroundColor={"#202B3B"}
+        marginTop={4}
+        color={"lightgray"}
+        marginBottom={4}
+      >
         <Box
           margin="0 auto"
           display="grid"
-          gridTemplateColumns="repeat(auto-fit, 200px)"
+          gridTemplateColumns="repeat(auto-fit, 150px)"
           justifyContent="space-around"
           rowGap="20px"
           columnGap="1.33%"
         >
-          {list.map((item) => (
+          {list.slice(1, 6 + 1).map((item) => (
             <Box
               key={item.id}
               sx={{
-                marginBottom: "20px",
-                backgroundColor: "#fff",
                 boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
-                borderRadius: "10px",
+                borderRadius: "20px",
                 overflow: "hidden",
                 transition: "transform 0.2 ease-in-out",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 textAlign: "center",
-                backgroundColor: "rgba(255,255,255,0.4)",
               }}
             >
               <Box>
@@ -41,54 +46,32 @@ function Forecast({ data2 }) {
                   variant="h2"
                   margin="auto"
                   fontSize="20px"
-                  padding={0.5}
+                  padding={3}
                 >
-                  {item.dt_txt.slice(8, 10)}.{item.dt_txt.slice(6, 7)}
-                </Typography>
-                <Divider sx={{ border: "1px solid black" }} />
-                <Typography
-                  variant="h2"
-                  margin="auto"
-                  fontSize="20px"
-                  padding={0.5}
-                >
-                  {item.dt_txt.slice(10, 16)} UTC
+                  {item.dt_txt.slice(10, 16)}
                 </Typography>
               </Box>
               <Box
                 display={"flex"}
-                flexDirection={"row"}
+                flexDirection={"column"}
                 justifyContent={"space-between"}
               >
-                <Typography
-                  variant="h2"
-                  margin="auto"
-                  paddingLeft={2}
-                  fontSize="30px"
-                >
-                  {item.main.temp.toFixed(0)}&#176;C
-                </Typography>
                 <Image
-                  src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+                  src={require(`../public/img/${item.weather[0].icon.slice(
+                    0,
+                    -1
+                  )}.png`)}
                   alt="/"
                   width="100"
                   height="100"
                 />
-              </Box>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  width: "92%",
-                  paddingBottom: "8px",
-                }}
-              >
-                <Typography variant="h2" fontSize="15px">
-                  {item.weather[0].main}
-                </Typography>
-                <Typography variant="h2" fontSize="15px">
-                  Feels like {item.main.feels_like.toFixed(0)}&#176;C
+                <Typography
+                  variant="h2"
+                  margin="auto"
+                  fontSize="30px"
+                  padding={3}
+                >
+                  {item.main.temp.toFixed(0)}&#176;C
                 </Typography>
               </Box>
             </Box>

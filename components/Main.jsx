@@ -30,8 +30,8 @@ function Main() {
         const allWeatherData = allData[0];
         const allForecastData = allData[1];
 
-        // console.log(allWeatherData.data);
-        // console.log(allForecastData.data);
+        console.log(allWeatherData.data);
+        console.log(allForecastData.data);
 
         setWeather(allWeatherData.data);
         setForecast(allForecastData.data);
@@ -81,7 +81,6 @@ function Main() {
 
       {weather.main && <Weather data={weather} />}
       {weather.main && <Forecast data2={forecast} />}
-
     </>
   );
 }
